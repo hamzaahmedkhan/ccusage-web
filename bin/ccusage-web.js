@@ -6,8 +6,15 @@ const path = require("path");
 const fs = require("fs");
 
 const appDir = path.join(__dirname, "..");
-const nextBin = path.join(appDir, "node_modules", ".bin", "next");
 const port = process.env.PORT ?? "4242";
+
+// resolve next's CLI entry relative to where npm installed it (handles hoisting)
+let nextCli;
+try {
+  nextCli = require.resolve("next/dist/bin/next");
+} catch {
+  nextCli = path.join(appDir, "node_modules", ".bin", "next");
+}
 
 function open(url) {
   const cmd =
@@ -27,13 +34,13 @@ const needsBuild = !fs.existsSync(buildDir);
 
 if (needsBuild) {
   console.log("Building ccusage-web (first run — this takes ~30s)…");
-  const build = spawnSync(nextBin, ["build"], { cwd: appDir, stdio: "inherit" });
+  const build = spawnSync(process.execPath, [nextCli, "build"], { cwd: appDir, stdio: "inherit" });
   if (build.status !== 0) process.exit(build.status ?? 1);
 }
 
 console.log(`\nStarting ccusage-web on http://localhost:${port}\n`);
 
-const server = spawn(nextBin, ["start", "--port", port], {
+const server = spawn(process.execPath, [nextCli, "start", "--port", port], {
   cwd: appDir,
   stdio: "inherit",
 });
