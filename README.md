@@ -54,7 +54,7 @@ npm install -g ccusage-web
 ccusage-web
 ```
 
-Your browser opens automatically at `http://localhost:3000`.
+Your browser opens automatically at `http://localhost:4242`.
 
 ## Development
 
