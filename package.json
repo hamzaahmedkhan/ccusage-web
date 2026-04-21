@@ -2,6 +2,28 @@
   "name": "ccusage-web",
   "version": "0.1.0",
   "description": "Local web dashboard for monitoring Claude Code token usage and costs",
+  "keywords": [
+    "claude",
+    "claude-code",
+    "anthropic",
+    "token-usage",
+    "cost-tracker",
+    "usage-dashboard",
+    "ai-cost-monitoring",
+    "claude-billing",
+    "ccusage",
+    "developer-tools",
+    "nextjs",
+    "dashboard"
+  ],
+  "homepage": "https://github.com/hamzaahmedkhan/ccusage-web",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamzaahmedkhan/ccusage-web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hamzaahmedkhan/ccusage-web/issues"
+  },
   "license": "MIT",
   "bin": {
     "ccusage-web": "./bin/ccusage-web.js"

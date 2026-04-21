@@ -1,6 +1,8 @@
 # ccusage-web
 
-A local web dashboard for monitoring your Claude Code token usage and costs — built on top of the [`ccusage`](https://www.npmjs.com/package/ccusage) CLI.
+> Track your **Claude Code spending**, visualize **Anthropic API token usage**, and monitor **billing windows** — all from a local web dashboard. No account needed, no data sent anywhere.
+
+A web UI for [`ccusage`](https://www.npmjs.com/package/ccusage) — the Claude Code usage analyzer. See your **Claude costs by day, month, session, and 5-hour billing block** with interactive charts and per-model breakdowns, instead of re-running terminal commands.
 
 | Daily view | Monthly view |
 |-----------|--------------|
@@ -25,14 +27,14 @@ The `ccusage` CLI is great for quick one-off checks. The web dashboard gives you
 
 ## What it shows
 
-- **Daily view** — spend per day with a trend chart, per-model badges, and a full breakdown table
-- **Monthly view** — bar chart of month-over-month spend with top-model callouts
+- **Daily view** — Claude Code spend per day with a trend chart, per-model badges, and a full breakdown table
+- **Monthly view** — bar chart of month-over-month Claude API spend with top-model callouts
 - **Sessions view** — per-project session costs sorted by recency
 - **Blocks view** — 5-hour billing window tracking (the same windows Claude Code uses for rate limiting), with an active-block indicator
 
 Each view includes:
 - Overview stat cards: total cost, total tokens, cache read %, cache write tokens
-- Cost-by-model bar chart with color-coded model labels
+- Cost-by-model bar chart with color-coded model labels (Opus, Sonnet, Haiku)
 - Token distribution donut (cache read · cache write · output · input)
 
 ## Requirements
@@ -71,6 +73,11 @@ The dashboard runs entirely on your machine. A single API route (`/api/usage`) s
 ## Tech stack
 
 - [Next.js 16](https://nextjs.org) · [shadcn/ui](https://ui.shadcn.com) · [Recharts](https://recharts.org) · [ccusage](https://www.npmjs.com/package/ccusage)
+
+## Related
+
+- [ccusage](https://github.com/ryoppippi/ccusage) — the CLI this dashboard is built on top of
+- [Claude Code](https://claude.ai/code) — the AI coding tool whose usage this tracks
 
 ## License
 
