@@ -7,7 +7,7 @@ const fs = require("fs");
 
 const appDir = path.join(__dirname, "..");
 const nextBin = path.join(appDir, "node_modules", ".bin", "next");
-const port = process.env.PORT ?? "3000";
+const port = process.env.PORT ?? "4242";
 
 function open(url) {
   const cmd =
