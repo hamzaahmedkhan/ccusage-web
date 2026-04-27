@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { runCcusage } from "@/lib/ccusage";
+import { parseSessionsFromJSONL } from "@/lib/sessions-parser";
 
 const ALLOWED_VIEWS = ["daily", "monthly", "weekly", "session", "blocks"] as const;
 type View = (typeof ALLOWED_VIEWS)[number];
@@ -42,13 +43,11 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+    if (view === "session") {
+      return NextResponse.json(parseSessionsFromJSONL());
+    }
     const raw = runCcusage(view);
-    const data =
-      view === "blocks"
-        ? normalizeBlocks(raw)
-        : view === "session"
-          ? normalizeSessions(raw)
-          : raw;
+    const data = view === "blocks" ? normalizeBlocks(raw) : raw;
     return NextResponse.json(data);
   } catch (err) {
     const detail = err instanceof Error ? err.message : String(err);
